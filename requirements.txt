@@ -4,4 +4,3 @@ pandas
 numpy
 pymongo
 ydata-profiling
-pycaret[full]
