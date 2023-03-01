@@ -1,6 +1,6 @@
 flask
 flask-cors
 pandas
-numpy
+numpy==1.20
 pymongo
 ydata-profiling
