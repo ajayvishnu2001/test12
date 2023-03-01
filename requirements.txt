@@ -1,7 +1,1 @@
-﻿pandas
-numpy
-pymongo
-ydata-profiling
-flask
-flask-cors
 --pre pycaret
