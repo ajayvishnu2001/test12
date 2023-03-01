@@ -104,12 +104,11 @@ def index24():
         cols = cols[-4:] + cols[:-4]
         ed = ed[cols]
         ed = ed.rename(columns={ed.columns[-1]: "y_value"})
-        return "Algorithm"
-#         s = setup(data=ed, target='y_value', fold_strategy='timeseries', session_id=123, fold=3, silent=True)
-#         best = compare_models()
-#         final_best = finalize_model(best)
+        s = setup(data=ed, target='y_value', fold_strategy='timeseries', session_id=123, fold=3, silent=True)
+        best = compare_models()
+        final_best = finalize_model(best)
 
-#         return {"Model": str(final_best)}
+        return {"Model": str(final_best)}
 
     except Exception as error:
         print("Some Error Occurred", error)
