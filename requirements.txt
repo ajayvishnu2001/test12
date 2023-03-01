@@ -4,4 +4,4 @@ pymongo
 ydata-profiling
 flask
 flask-cors
-pycaret 3.0
+--pre pycaret
