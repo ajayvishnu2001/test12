@@ -85,26 +85,26 @@ class st_class:
 def index24():
     try:
         print("Algorithm Analyse")
+        cursor = collection.find({})
+        records = list(cursor)
+        ed = pd.DataFrame(records)
+        ed.drop(['_id'], axis=1, inplace=True)
+        ed.dropna(how='all', inplace=True)
+        ed = ed.loc[:, ['Date', ed.columns[-1]]]
+
+        ed['Date'] = pd.to_datetime(ed['Date'])
+        ed['Series'] = np.arange(1, len(ed) + 1)
+        ed['Month'] = [i.month for i in ed['Date']]
+        ed['Year'] = [i.year for i in ed['Date']]
+        ed['Day'] = [i.day for i in ed['Date']]
+        st_date = ed['Date'].iloc[-1]
+
+        ed.drop(['Date'], axis=1, inplace=True)
+        cols = ed.columns.tolist()
+        cols = cols[-4:] + cols[:-4]
+        ed = ed[cols]
+        ed = ed.rename(columns={ed.columns[-1]: "y_value"})
         return "Algorithm"
-#         cursor = collection.find({})
-#         records = list(cursor)
-#         ed = pd.DataFrame(records)
-#         ed.drop(['_id'], axis=1, inplace=True)
-#         ed.dropna(how='all', inplace=True)
-#         ed = ed.loc[:, ['Date', ed.columns[-1]]]
-
-#         ed['Date'] = pd.to_datetime(ed['Date'])
-#         ed['Series'] = np.arange(1, len(ed) + 1)
-#         ed['Month'] = [i.month for i in ed['Date']]
-#         ed['Year'] = [i.year for i in ed['Date']]
-#         ed['Day'] = [i.day for i in ed['Date']]
-#         st_date = ed['Date'].iloc[-1]
-
-#         ed.drop(['Date'], axis=1, inplace=True)
-#         cols = ed.columns.tolist()
-#         cols = cols[-4:] + cols[:-4]
-#         ed = ed[cols]
-#         ed = ed.rename(columns={ed.columns[-1]: "y_value"})
 #         s = setup(data=ed, target='y_value', fold_strategy='timeseries', session_id=123, fold=3, silent=True)
 #         best = compare_models()
 #         final_best = finalize_model(best)
