@@ -1,1 +1,6 @@
 --pre pycaret
+flask
+flask-cors
+pandas
+numpy
+pymongo
